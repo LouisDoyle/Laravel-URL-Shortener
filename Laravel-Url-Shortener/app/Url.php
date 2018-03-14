@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Url extends Model
 {
@@ -18,5 +19,15 @@ class Url extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @param Builder $builder
+     * @param string $token
+     * @return $this
+     */
+    public function scopeWhereToken(Builder $builder, string $token)
+    {
+        return $builder->where('token', $token);
     }
 }

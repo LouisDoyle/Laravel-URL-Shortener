@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Model
 {
@@ -25,5 +26,15 @@ class User extends Model
     public function passwordResets()
     {
         return $this->hasMany(PasswordReset::class);
+    }
+
+    /**
+     * @param Builder $builder
+     * @param string $email
+     * @return $this
+     */
+    public function scopeWhereEmail(Builder $builder, string $email)
+    {
+        return $builder->where('email', $email);
     }
 }
