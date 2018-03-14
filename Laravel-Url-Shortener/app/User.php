@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as BaseUser;
 use Illuminate\Database\Eloquent\Builder;
 
-class User extends Model
+class User extends BaseUser
 {
     protected $fillable = [
         'email',
